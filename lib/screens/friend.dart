@@ -76,7 +76,7 @@ class _FollowingPageState extends State<FollowingPage>
                   automaticallyImplyLeading: false,
                   floating: true,
                   expandedHeight: size.height * 0,
-                  forceElevated: innerBoxIsScrolled,
+                  //forceElevated: innerBoxIsScrolled,
                   backgroundColor: Colors.white,
                   elevation: 0,
                   stretch: true,
@@ -102,18 +102,16 @@ class _FollowingPageState extends State<FollowingPage>
                 ),
               ];
             },
-            body: Expanded(
-              child: Container(
-                  padding: const EdgeInsets.only(right: 20, left: 20),
-                  color: Colors.white,
-                  width: double.infinity,
-                  child: ListView.builder(
-                    itemCount: users.length,
-                    itemBuilder: (context, index) {
-                      return userComponent(user: users[index]);
-                    },
-                  )),
-            ),
+            body: Container(
+                padding: const EdgeInsets.only(right: 20, left: 20),
+                color: Colors.blue,
+                width: double.infinity,
+                child: ListView.builder(
+                  itemCount: users.length,
+                  itemBuilder: (context, index) {
+                    return userComponent(user: users[index]);
+                  },
+                )),
           ),
           BottomNavbar()
         ],
@@ -122,56 +120,53 @@ class _FollowingPageState extends State<FollowingPage>
   }
 
   userComponent({required User user}) {
-    return Expanded(
-      flex: 10,
-      child: Container(
-        padding: const EdgeInsets.only(top: 10, bottom: 10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(children: [
-              SizedBox(
-                  width: 60,
-                  height: 60,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(50),
-                    child: Image.network(user.image),
-                  )),
-              const SizedBox(width: 10),
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(user.name,
-                    style: const TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.w500)),
-                const SizedBox(
-                  height: 5,
-                ),
-                Text(user.username, style: TextStyle(color: Colors.grey[600])),
-              ])
-            ]),
-            Container(
-                height: 40,
-                decoration: BoxDecoration(
-                  border: Border.all(color: const Color(0xffeeeeee)),
+    return Container(
+      padding: const EdgeInsets.only(top: 10, bottom: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(children: [
+            SizedBox(
+                width: 60,
+                height: 60,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: Image.network(user.image),
+                )),
+            const SizedBox(width: 10),
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(user.name,
+                  style: const TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.w500)),
+              const SizedBox(
+                height: 5,
+              ),
+              Text(user.username, style: TextStyle(color: Colors.grey[600])),
+            ])
+          ]),
+          Container(
+              height: 40,
+              decoration: BoxDecoration(
+                border: Border.all(color: const Color(0xffeeeeee)),
+                borderRadius: BorderRadius.circular(50),
+              ),
+              child: MaterialButton(
+                elevation: 0,
+                color: user.isFollowedByMe
+                    ? Color.fromARGB(255, 238, 238, 238)
+                    : const Color(0xffffff),
+                onPressed: () {
+                  setState(() {
+                    user.isFollowedByMe = !user.isFollowedByMe;
+                  });
+                },
+                shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50),
                 ),
-                child: MaterialButton(
-                  elevation: 0,
-                  color: user.isFollowedByMe
-                      ? Color.fromARGB(255, 238, 238, 238)
-                      : const Color(0xffffff),
-                  onPressed: () {
-                    setState(() {
-                      user.isFollowedByMe = !user.isFollowedByMe;
-                    });
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  child: Text(user.isFollowedByMe ? 'Unfollow' : 'Follow',
-                      style: const TextStyle(color: Colors.black)),
-                ))
-          ],
-        ),
+                child: Text(user.isFollowedByMe ? 'Unfollow' : 'Follow',
+                    style: const TextStyle(color: Colors.black)),
+              ))
+        ],
       ),
     );
   }

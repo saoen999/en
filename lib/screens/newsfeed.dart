@@ -21,11 +21,11 @@ class _newsfeed_screenState extends State<newsfeed_screen> {
       body: Stack(
         children: [
           NestedScrollView(
-            floatHeaderSlivers: true,
-            headerSliverBuilder:
-                (BuildContext context, bool innerBoxIsScrolled) {
-              return <Widget>[
-                SliverAppBar(
+              floatHeaderSlivers: true,
+              headerSliverBuilder:
+                  (BuildContext context, bool innerBoxIsScrolled) {
+                return <Widget>[
+                  SliverAppBar(
                     automaticallyImplyLeading: false,
                     floating: true,
                     expandedHeight: size.height * 0.085,
@@ -37,7 +37,7 @@ class _newsfeed_screenState extends State<newsfeed_screen> {
                     actions: <Widget>[
                       IconButton(
                         iconSize: 35,
-                        onPressed: (){},
+                        onPressed: () {},
                         icon: Icon(
                           Icons.search,
                           color: Colors.black,
@@ -45,7 +45,7 @@ class _newsfeed_screenState extends State<newsfeed_screen> {
                       ),
                       IconButton(
                         iconSize: 35,
-                        onPressed: (){},
+                        onPressed: () {},
                         icon: Icon(
                           Icons.chat_bubble_outline_outlined,
                           color: Colors.black,
@@ -53,52 +53,48 @@ class _newsfeed_screenState extends State<newsfeed_screen> {
                       ),
                     ],
                   ),
-              ];
-            },
-            body: ListView(
-              padding: EdgeInsets.only(top: 8, bottom: 8),
-              children: [
-                postcard(
-                  pics: "assets/images/p1.png", 
-                  name: "Heng Sokchamrern", 
-                  time: "10h", 
-                  share: "2", 
-                  postImage: "assets/images/post1.jpg", 
-                  postCaption: "yoyooyo", 
-                  like: "10", 
-                  comments: "4"
-                ),
-                Divider(
-                  thickness: 10,
-                  color: Color.fromARGB(255, 224, 232, 234),
-                ),
-                postcard(
-                  pics: "assets/images/p1.png", 
-                  name: "Heng Sokchamrern", 
-                  time: "10h", 
-                  share: "2", 
-                  postImage: "assets/images/iu.jpeg", 
-                  postCaption: "yoyoyo", 
-                  like: "10", 
-                  comments: "4"
-                ),
-                Divider(
-                  thickness: 10,
-                  color: Color.fromARGB(255, 224, 232, 234),
-                ),
-                postcard(
-                  pics: "assets/images/p1.png", 
-                  name: "Heng Sokchamrern", 
-                  time: "10h", 
-                  share: "2", 
-                  postImage: "assets/images/iu.jpeg", 
-                  postCaption: "yoyoyo", 
-                  like: "10", 
-                  comments: "4"
-                ),
-              ],
-            )
-          ),
+                ];
+              },
+              body: ListView(
+                padding: EdgeInsets.only(top: 8, bottom: 8),
+                children: [
+                  postcard(
+                      pics: "assets/images/p1.png",
+                      name: "Heng Sokchamrern",
+                      time: "10h",
+                      share: "2",
+                      postImage: "assets/images/post1.jpg",
+                      postCaption: "yoyooyo",
+                      like: "10",
+                      comments: "4"),
+                  Divider(
+                    thickness: 10,
+                    color: Color.fromARGB(255, 224, 232, 234),
+                  ),
+                  postcard(
+                      pics: "assets/images/p1.png",
+                      name: "Heng Sokchamrern",
+                      time: "10h",
+                      share: "2",
+                      postImage: "assets/images/iu.jpeg",
+                      postCaption: "yoyoyo",
+                      like: "10",
+                      comments: "4"),
+                  Divider(
+                    thickness: 10,
+                    color: Color.fromARGB(255, 224, 232, 234),
+                  ),
+                  postcard(
+                      pics: "assets/images/p1.png",
+                      name: "Heng Sokchamrern",
+                      time: "10h",
+                      share: "2",
+                      postImage: "assets/images/iu.jpeg",
+                      postCaption: "yoyoyo",
+                      like: "10",
+                      comments: "4"),
+                ],
+              )),
           BottomNavbar(),
         ],
       ),
